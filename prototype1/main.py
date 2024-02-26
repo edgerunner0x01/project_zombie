@@ -1,3 +1,10 @@
+#!/usr/bin/python3
+
+#########################################################
+# Zombie - BA9CHICH Destruction                         # 
+# Author - edgerunner0x01                               #
+#########################################################
+
 try:
     from time import sleep
     from colorama import init , Style
