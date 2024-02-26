@@ -189,6 +189,8 @@ def main():
         bruteforce()
     elif exec == 2:
         spam_users()
+    else:
+        main()
 
 
 
