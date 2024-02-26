@@ -21,7 +21,7 @@ try:
     magenta=str(Fore.MAGENTA)
     yellow=str(Fore.YELLOW)
     from random import randint
-    wk=run("cd", shell=True,capture_output=True, text=1).stdout
+    wk=run("pwd", shell=True,capture_output=True, text=1).stdout
 
 except Exception as E:
     print("error: "+str(E))
