@@ -65,7 +65,7 @@ def bruteforce():
             return True
 
         else:
-            print(red+"No Match for [{}:{}] ".format(identifier,password))
+            print(red+"No Match for [{}:{}] ".format(identifier,password),end="\r")
             return False
 
 
