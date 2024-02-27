@@ -21,6 +21,7 @@ try:
     from random import randint
     wk=str(run("pwd", shell=True,capture_output=True, text=1).stdout).replace("\n","")
     from os import system , path
+    import sys
 except Exception as E:
     print("error: "+str(E))
 
@@ -221,22 +222,26 @@ def syncUsers():
              
 
 def main():
-    exec=str(input(f"# Select : \n\n\t{green}[1] Bruteforce/Crack Accounts \n\t{green}[2] Spam Fake Users registration \n\t{green}[3] Sync Stored Users \n\t{green}[99] Exit\n{Style.RESET_ALL}> "))
+    exec=str(input(f"# Select : \n\n  {green}[1] Bruteforce/Crack Accounts \n  {green}[2] Spam Fake Users registration \n  {green}[3] Sync Stored Users \n  {green}[99] Exit\n{Style.RESET_ALL}\n> "))
     try:
         if int(exec) == 1:
+            print("")
             bruteforce()
         elif int(exec) == 2:
+            print("")
             spam_users()
         elif int(exec) == 3:
+            print("")
             syncUsers()
         elif int(exec) == 99:
-            exit
+            sys.exit()
         else:
             main()
     except KeyboardInterrupt:
         exit
-    except:
-        main()
+    except Exception as E:
+        print(f"{red}Error: "+str(E))
+
 
 
 
@@ -245,7 +250,7 @@ if __name__=="__main__":
         init(autoreset=True)
         banner()
         try:
-            while(1):
+            while 1:
                 main()
                 print("")
         except KeyboardInterrupt:
