@@ -3,8 +3,6 @@ try:
 except Exception as E:
     print("error: "+str(E))
 
-
-
 class combo: 
     def __init__(self):
         self.url=str("https://ba9chich.com/requests/login.php")
