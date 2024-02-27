@@ -221,14 +221,16 @@ def syncUsers():
              
 
 def main():
-    exec=str(input(f"# Select (1/2/3) : \n\n\t{green}[1] Bruteforce/Crack Accounts \n\t{green}[2] Spam Fake Users registration \n\t{green}[3] Sync Stored Users \n{Style.RESET_ALL}> "))
+    exec=str(input(f"# Select : \n\n\t{green}[1] Bruteforce/Crack Accounts \n\t{green}[2] Spam Fake Users registration \n\t{green}[3] Sync Stored Users \n\t{green}[99] Exit\n{Style.RESET_ALL}> "))
     try:
         if int(exec) == 1:
             bruteforce()
         elif int(exec) == 2:
             spam_users()
         elif int(exec) == 3:
-            syncUsers()  
+            syncUsers()
+        elif int(exec) == 99:
+            exit
         else:
             main()
     except KeyboardInterrupt:
