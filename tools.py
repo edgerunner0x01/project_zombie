@@ -97,7 +97,7 @@ class SpamUsers:
         "y_password": password}
         try:
             req=requests.post(self.URL,data=payload,headers=self.HEADERS)
-            if req.status_code == 200 and int(str(req.text).replace("\n","")) == 8:
+            if req.status_code == 200 and "8" in str(req.text).replace("\n","") :
                 return 1
             else:
                 return 0
