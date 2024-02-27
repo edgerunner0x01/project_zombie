@@ -168,8 +168,8 @@ def spam_users():
     try:
         print(f"{green}[+] Accounts will be saved at "+str(wk.stdout).replace("\n","")+"/created_accounts.txt")
         for i in range(length):
-            usernamemod=username+str(randint(0,length)*randint(1,99+randint(1,100)))
-            emailmod=email+str(randint(0,length)*randint(1,99)+randint(1,100))+"@gmail.com"      
+            usernamemod=username+str(randint(1,length)*randint(1,99+randint(1,100)))
+            emailmod=email+str(randint(1,length)*randint(1,99)+randint(1,100))+"@gmail.com"      
             if spam.startSpam(usernamemod,emailmod,password):
                 print(f"{green}[Added] [{i+1}/{length}] "+emailmod+" -> "+usernamemod+":"+password)
                 with open("created_accounts.txt","a+") as f:
