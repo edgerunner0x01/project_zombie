@@ -5,7 +5,7 @@ except Exception as E:
 
 
 
-class combo(): 
+class combo: 
     def __init__(self):
         self.url=str("https://ba9chich.com/requests/login.php")
         self.headers={
