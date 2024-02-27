@@ -12,8 +12,6 @@ try:
     import requests
     import datetime
     from subprocess import run
-    from os import system
-    import argparse
     import json
     from tools import *
     red=str(Fore.RED)
