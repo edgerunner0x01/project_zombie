@@ -249,10 +249,19 @@ def syncUsers():
 
         except Exception as E:
             print(f"{red}Error: "+str(E))
-             
+
+def help():
+    print(f"""{yellow}
+        1) BruteForce/Crack : \n\t\t- Users List: List of stored users to bruteforce \n\t\t- Wordlist/Passwordlist: List of stored passwords \n\t\t- Proxies: proxies list \n
+        2) Spam Users : \n\t\t- Username: to spam \n\t\t- Email username part: to use for the request \n\t\t- Password: will be used for all users \n\t\t- Range: number of accs to be created \n
+        3) Sync Users : Sync all stored users in the Website/Data_Base and save them to a file 
+        
+        0) Help: print this help message   
+        99) Exit the program 
+""")       
 
 def main():
-    exec=str(input(f"# Select : \n\n  {green}[1] Bruteforce/Crack Accounts \n  {green}[2] Spam Fake Users registration \n  {green}[3] Sync Stored Users \n  {green}[99] Exit\n{Style.RESET_ALL}\n> "))
+    exec=str(input(f"# Select : \n\n  {green}[1] Bruteforce/Crack Accounts \n  {green}[2] Spam Fake Users registration \n  {green}[3] Sync Stored Users \n\n  {green}[0] Help\n  {green}[99] Exit\n{Style.RESET_ALL}\n> "))
     try:
         if int(exec) == 1:
             print("")
@@ -263,6 +272,9 @@ def main():
         elif int(exec) == 3:
             print("")
             syncUsers()
+        elif int(exec) == 0:
+            print("")
+            help()
         elif int(exec) == 99:
             sys.exit()
         else:
