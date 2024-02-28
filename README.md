@@ -17,4 +17,4 @@ clear && ./main.py
 
 
 ## License
-[GPL]
+[GPL](https://www.gnu.org/licenses/gpl-3.0.html)
