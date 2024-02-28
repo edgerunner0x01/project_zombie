@@ -251,7 +251,7 @@ def syncUsers():
             print(f"{red}Error: "+str(E))
 
 def help():
-    print(f"""{yellow}
+    print(f"""{yellow}\
         1) BruteForce/Crack : \n\t\t- Users List: List of stored users to bruteforce \n\t\t- Wordlist/Passwordlist: List of stored passwords \n\t\t- Proxies: proxies list \n
         2) Spam Users : \n\t\t- Username: to spam \n\t\t- Email username part: to use for the request \n\t\t- Password: will be used for all users \n\t\t- Range: number of accs to be created \n
         3) Sync Users : Sync all stored users in the Website/Data_Base and save them to a file 
@@ -273,7 +273,7 @@ def main():
             print("")
             syncUsers()
         elif int(exec) == 0:
-            print("")
+            #print("")
             help()
         elif int(exec) == 99:
             sys.exit()
